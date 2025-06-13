@@ -1,5 +1,7 @@
 package org.ies63.progI.model;
 
+import org.ies63.progI.exceptions.BicicletaException;
+
 public class Bicicleta extends Producto implements Imprimir , Impuesto {
 
   private int rodado;
@@ -9,9 +11,13 @@ public class Bicicleta extends Producto implements Imprimir , Impuesto {
     // llamo al constructor vacio de la clase padre Producto
     super();
   }
-  public  Bicicleta( String producto, double precio, String descripcion, int rodado, String color) {
+  public  Bicicleta( String producto, double precio, String descripcion, int rodado, String color) throws BicicletaException {
     // llamo al constructor con atributos de la clase padre Producto
+
     super(producto, precio, descripcion);
+    if(rodado < 14)
+    {   throw new BicicletaException(1);
+    }
     this.rodado = rodado;
     this.color = color;
   }
